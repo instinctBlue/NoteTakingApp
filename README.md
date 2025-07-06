@@ -11,7 +11,7 @@ A simple WPF note-taking application written in C# that allows you to create, ed
 
   ## 📸 Screenshot
 
-Here is the main window of the Family Budget App:
+Here is the main window of the Note Taking App:
 
 ![Main Window](/NoteTakingApp.png)
 
