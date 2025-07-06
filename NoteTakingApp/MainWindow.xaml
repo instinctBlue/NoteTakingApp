@@ -1,0 +1,51 @@
+﻿<Window x:Class="NoteTakingApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Note Taking App" Height="400" Width="600">
+    <Window.Resources>
+        <!-- Define your resources here -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Notes list -->
+        <ListBox x:Name="NotesListBox" Grid.Column="0" 
+                 DisplayMemberPath="Title"
+                 SelectionChanged="NotesListBox_SelectionChanged" />
+
+        <!-- Note editor -->
+        <Grid Grid.Column="1" Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Title TextBox with watermark -->
+            <Grid Height="30" Margin="0,0,0,5">
+                <TextBox x:Name="TitleTextBox" FontWeight="Bold" />
+                <TextBlock Text="Note Title"
+                           Foreground="Gray"
+                           Margin="5,0,0,0"
+                           VerticalAlignment="Center"
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, 
+                                        ElementName=TitleTextBox, 
+                                        Converter={StaticResource BoolToVisibilityConverter}}" />
+            </Grid>
+
+            <TextBox x:Name="ContentTextBox" Grid.Row="1" AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0" >
+                <Button x:Name="AddButton" Content="Add" Width="75" Margin="0,0,10,0" Click="AddButton_Click"/>
+                <Button x:Name="SaveButton" Content="Save" Width="75" Margin="0,0,10,0" Click="SaveButton_Click"/>
+                <Button x:Name="DeleteButton" Content="Delete" Width="75" Click="DeleteButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
