@@ -9,6 +9,12 @@ A simple WPF note-taking application written in C# that allows you to create, ed
 - Real-time UI updates using `ObservableCollection` and `INotifyPropertyChanged`
 - Simple and clean UI built with WPF
 
+  ## 📸 Screenshot
+
+Here is the main window of the Family Budget App:
+
+![Main Window](/NoteTakingApp.png)
+
 
 ## Getting Started
 
